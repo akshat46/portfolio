@@ -1,0 +1,20 @@
+<div id="skills-wrapper">
+    <div id="slanted-skills"></div>
+    <div id="slanted-skills"></div>
+    <div id="slanted-skills"></div>
+    <div id="slanted-skills"></div>
+    <div id="skills">
+        <div class="heading">Skills</div>
+        <div class="divider"></div>
+        {% for row in content.skills %}
+        <div class="skills-row">
+            {% for skill in row %}
+            <div class="skill-element">
+                <div class="skill-logo" style="background-image: url('{{skill.logo}}')"></div>
+                <div class="text">{{skill.name}}</div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endfor %}
+    </div>
+</div>

@@ -1,0 +1,42 @@
+@charset "utf-8";
+
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans:200,300,400|Racing+Sans+One');
+@import "pages/about";
+@import "pages/skills";
+@import "pages/projects";
+
+html, body{
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  max-width: 100% !important;
+  overflow-y: scroll;
+  height: 100%;
+  background-color: $custom-white;
+}
+::-webkit-scrollbar {
+    width: 0px;  /* remove scrollbar space */
+    background: transparent;  /* optional: just make scrollbar invisible */
+}
+/* optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+    background: #FF0000;
+}
+
+.heading{
+  font-family: 'Racing Sans One', cursive;
+  font-size: 5vh;
+}
+
+.text{
+  font-family: 'Fira Sans', sans-serif;
+  font-size: 1.4vw;
+}
+
+.divider{
+  display: block;
+  position: relative;
+  margin: 20px auto;
+  border-top: solid 1px;
+  width: 80%;
+}

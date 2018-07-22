@@ -1,0 +1,400 @@
+@import "styles.vars";
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans:200,300,400,700|Racing+Sans+One');
+
+$background-uniride-web: #00FFFF;
+$uniride-web:            #49A5F2;
+$uniride-web-dark:       #0B7AD5;
+$uniride-web-black:      #2C2D2C;
+
+$background-uniride-android: #F9BB72;
+$uniride-android:            #59BBB9;
+$uniride-android-dark:       #2BAFAD;
+$uniride-android-black:      #2F3D52;
+
+@mixin fluid-font($font-size){
+  @media screen and (min-width: 800px) {
+    font-size: $font-size + 10;
+  }
+}
+
+@mixin arrow-dimensions($size, $thickness, $color, $direction){
+  height: $size;
+  width: $size;
+  border: solid $color;
+  border-width: $thickness $thickness 0 0;
+  transform: rotate($direction);
+}
+
+.box-overlay{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  border-radius: inherit;
+  overflow: hidden;
+}
+
+#project{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: grey;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+
+  .heading{
+    color: $accent-red-2;
+  }
+  .divider{
+    border-color: $accent-red-3;
+    opacity: 0.5;
+    margin-bottom: 40px;
+  }
+
+  .project-element{
+    display: block;
+    box-sizing: border-box;
+    text-align: center;
+    padding: 20px 10px;
+    width: 100%;
+    min-height: 100vh;
+  }
+
+  .project-element-box{
+    @include disable-select();
+    display: block;
+    position: absolute;
+    box-sizing: border-box;
+    margin: auto;
+    top: 0; right: 0; bottom: 0; left: 0;
+    width: 75vw;
+    height: 75vw;
+    min-width: 300px;
+    min-height: 300px;
+    max-width: 550px;
+    max-height: 550px;
+    border-radius: 20px;
+    padding: 5vh;
+    text-align: center;
+    transform-style: preserve-3d;
+    transform: translateZ(-100px);
+    cursor: pointer;
+
+    &:hover{
+      .project-top-bar{
+        .project-button{
+          @include smooth-transition;
+          border-radius: 50%;
+          left: 30%;
+          width: 20%;
+          border-color: $accent-red;
+        }
+      }
+    }
+    .project-preview-landscape{
+      box-sizing: border-box;
+      position: relative;
+      margin: 0 auto;
+      margin-bottom: 8%;
+      width: 65%;
+      height: 22vmin;
+      max-height: 180px;
+      min-height: 100px;
+      border-radius: 2%;
+      overflow: hidden;
+      transform: translateZ(100px);
+    }
+    .project-top-bar{
+      position: absolute;
+      width: 40%;
+      height: 40%;
+      top: -25%;
+      right: 0;
+      .project-button{
+        position: absolute;
+        top: 73%;
+        left: 23%;
+        padding: 1%;
+        width: 30%;
+        height: 20%;
+        border: solid 3px $primary-blue-2;
+        border-radius: 5px;
+        text-align: center;
+        overflow: hidden;
+        @include smooth-transition;
+
+        .arrow {
+          @include arrow-dimensions(18px, 4px, $accent-red, 45deg);
+          position: absolute;
+          top: 0; right: 0; bottom: 0; left: 0;
+          margin: auto;
+          border-radius: 3px;
+          box-sizing: border-box;
+
+          @media (max-width: 500px){
+            @include arrow-dimensions(11px, 2px, $accent-red, 45deg);
+          }
+        }
+      }
+
+      .project-top-bar-overlay{
+        width: 100%;
+        height: 100%;
+        background: $primary-blue-2;
+        border-radius: 10px;
+        transform: rotate(60deg);
+      }
+    }
+
+    .project-description-main{
+      display: block;
+      position: relative;
+      width: 100%;
+      height: auto;
+      top: 50%;
+      transform-style: preserve-3d;
+      transform: translateY(-50%);
+    }
+  }
+  #Uniride-Web{
+    background-color: $background-uniride-web;
+    .project-element-box{
+      background-color: $uniride-web;
+      @include add-shadow($uniride-web, 75px, -1px);
+    }
+    .project-preview-landscape{
+      background: url('../img/uniride-web-screenshot.png');
+      @include add-shadow($uniride-web-dark, 25px, -2px);
+      background-color: white;
+      background-size: cover;
+      background-position: center;
+    }
+    .project-preview-landscape-enlarged{
+      background: url('../img/uniride-web-preview.gif');
+      @include add-shadow($uniride-web-dark, 35px, -2px);
+      background-color: white;
+      background-size: cover;
+      background-position: center;
+    }
+    .title-1{
+      color: $uniride-web-black;
+      font-weight: 500;
+    }
+    .title-2{
+      color: $custom-white;
+      font-family: 'Racing Sans One', cursive;
+      text-align: right;
+    }
+  }
+
+  #Uniride-Android{
+    #project-detail-background{
+      background-color: $uniride-android-dark;
+    }
+    background-color: $background-uniride-android;
+    .project-element-box{
+      background-color: $uniride-android;
+      @include add-shadow($uniride-android, 75px, -1px);
+    }
+    .project-preview-landscape{
+      background: transparent no-repeat;
+      background-image: url('../img/uniride-android-screenshot.png');
+      @include add-shadow($uniride-android-dark, 25px, -2px);
+      width: 45%;
+      max-width: 100%;
+      height: 350px;
+      max-height: 350px;
+      min-height: 100%;
+      background-color: white;
+      background-size: cover;
+      background-position: center;
+    }
+
+    @media (max-width: 876px){
+      .project-preview-landscape{
+        width: 180px;
+        height: 300px;
+      }
+    }
+
+    @media (max-width: 600px){
+      .project-preview-landscape{
+        width: 100px;
+        height: 180px;
+      }
+    }
+    .project-preview-landscape-enlarged{
+      background: url('../img/uniride-android-preview.gif');
+      @include add-shadow($uniride-android-dark, 35px, -2px);
+      background-color: white;
+      background-size: cover;
+      background-position: center;
+      width: 320px;
+      height: 60vh;
+    }
+    @media (max-width: 876px){
+      .project-preview-landscape-enlarged{
+        width: 180px;
+      }
+    }
+
+    @media (max-width: 600px){
+      .project-preview-landscape-enlarged{
+        width: 100px;
+      }
+    }
+
+    .title-1{
+      color: $uniride-android-black;
+      font-weight: 500;
+    }
+    .title-2{
+      color: $custom-white;
+      font-family: 'Racing Sans One', cursive;
+      text-align: right;
+    }
+  }
+}
+
+.title-1{
+  @include fluid-font(35px);
+  font-family: 'Fira Sans', sans-serif;
+  line-height: 0.8;
+  font-weight: 200;
+  font-size: 35px;
+}
+
+.title-2{
+  @include fluid-font(12px);
+  font-family: 'Fira Sans', sans-serif;
+  line-height: 0.8;
+  font-size: 12px;
+}
+
+.project-title{
+  display: inline-block;
+  margin: 0 auto;
+  text-align: center;
+  vertical-align: top;
+  transform: translateZ(50px);
+}
+
+#project-transition-overlay{
+  position: absolute;
+  top: 0;
+  left: 100%;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background-color: $accent-red;
+}
+
+#project-detail-background{
+  position: absolute;
+  top: 0;
+  left: 100%;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  transform: scale(0.7);
+  background-color: $uniride-web;
+  .project-detail-wrapper{
+    position: relative;
+    margin: auto;
+    height: 80%;
+    width: 80%;
+    top: 50%;
+    text-align: center;
+    transform: translateY(-50%);
+    overflow: scroll;
+    overflow-x: hidden;
+  }
+
+  #arrow-projects {
+    @include arrow-dimensions(30px, 4px, $uniride-web-black, -135deg);
+    border-radius: 3px;
+    box-sizing: border-box;
+    cursor: pointer;
+    position: absolute;
+    @include smooth-transition;
+
+    @media (max-width: 500px){
+      @include arrow-dimensions(20px, 4px, $uniride-web-black, -135deg);
+    }
+  }
+
+  .arrow-wrapper{
+    position: absolute;
+    top: 5vmin;
+    left: 5vmin;
+    opacity: 0;
+    &:hover{
+      #arrow-projects:nth-child(1){
+        transform: rotate(-495deg);
+      }
+      #arrow-projects:nth-child(2){
+        transform: translateX(-35px) rotate(45deg);
+        @media (max-width: 500px){
+          transform: translateX(-25px) rotate(45deg);
+        }
+      }
+    }
+  }
+
+  .project-title{
+    opacity: 0;
+    margin-bottom: 50px;
+  }
+
+  .title-1{
+    color: $uniride-web-black;
+    font-weight: 500;
+  }
+  .title-2{
+    //display: inline-block;
+    color: $custom-white;
+    width: auto;
+    font-family: 'Racing Sans One', cursive;
+    text-align: right;
+  }
+
+  .project-description{
+    position: relative;
+    margin: auto;
+    width: 80%;
+    margin-top: 20px;
+    font-family: 'Fira Sans', sans-serif;
+    .align-left{
+      width: 80%;
+      min-width: 250px;
+      position: relative;
+      margin: auto;
+      text-align: left;
+      opacity: 0;
+    }
+  }
+
+  .project-preview-landscape-enlarged{
+    box-sizing: border-box;
+    position: relative;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 5px;
+    width: 48vw;
+    height: 32vw;
+    min-width: 300px; min-height: 300px;
+    //opacity: 0;
+  }
+}
+
+#Uniride-Android{
+  #arrow-projects{
+    @include arrow-dimensions(30px, 4px, $uniride-android-black, -135deg);
+    @media (max-width: 500px){
+      @include arrow-dimensions(20px, 4px, $uniride-android-black, -135deg);
+    }
+  }
+}

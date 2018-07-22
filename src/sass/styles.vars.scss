@@ -1,0 +1,67 @@
+// Colors
+
+$custom-white:          #FCFCFC;
+$primary-blue:          #313958;
+$primary-blue-2:        #3B3958;
+$accent-red-bright:     #F54063;
+$accent-red:            #D93958;
+$accent-red-2:          #AB3958;
+$accent-red-3:          #783958;
+$light-1:               #EDB385;
+
+// Grid
+
+$screen-tiny:           480px;
+$screen-small:          768px;
+$screen-medium:         992px;
+$screen-large:          1200px;
+
+$grid-container-small:  750px;
+$grid-container-medium: 970px;
+$grid-container-large:  1170px;
+
+$grid-columns:          12;
+$grid-gutter-width:     30px;
+$grid-gutter:           $grid-gutter-width / 2;
+
+$grid-include-pull:     false;
+$grid-include-push:     false;
+$grid-include-offset:   false;
+
+@mixin disable-select{
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+  supported by Chrome and Opera */
+}
+
+//TODO: variables
+@mixin smooth-transition{
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition:    all 0.2s ease-out;
+  -ms-transition:     all 0.2s ease-out;
+  -o-transition:      all 0.2s ease-out;
+}
+
+@mixin add-shadow($shadow-color, $spread, $size){
+  -webkit-box-shadow: 0px 0px $spread $size $shadow-color;
+  -moz-box-shadow: 0px 0px $spread $size $shadow-color;
+  box-shadow: 0px 0px $spread $size $shadow-color;
+}
+
+@mixin fluid-font($font-size){
+  @media screen and (min-width: 800px) {
+    font-size: $font-size + 10;
+  }
+}
+
+@mixin arrow-dimensions($size, $thickness, $color, $direction){
+  height: $size;
+  width: $size;
+  border: solid $color;
+  border-width: $thickness $thickness 0 0;
+  transform: rotate($direction);
+}

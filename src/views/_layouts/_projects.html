@@ -1,0 +1,5 @@
+{% set projects = content.project_elements %}
+{# {% include '/_layouts/_components/_project-element.html' with {'project': projects[0]} %} #}
+{% for project in projects %}
+{% include '/_layouts/_components/_project-element.html' with {'project': project} %}
+{% endfor %}
