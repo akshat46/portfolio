@@ -11,20 +11,6 @@ $uniride-android:            #59BBB9;
 $uniride-android-dark:       #2BAFAD;
 $uniride-android-black:      #2F3D52;
 
-@mixin fluid-font($font-size){
-  @media screen and (min-width: 800px) {
-    font-size: $font-size + 10;
-  }
-}
-
-@mixin arrow-dimensions($size, $thickness, $color, $direction){
-  height: $size;
-  width: $size;
-  border: solid $color;
-  border-width: $thickness $thickness 0 0;
-  transform: rotate($direction);
-}
-
 .box-overlay{
   position: absolute;
   width: 100%;
@@ -58,7 +44,7 @@ $uniride-android-black:      #2F3D52;
     display: block;
     box-sizing: border-box;
     text-align: center;
-    padding: 20px 10px;
+    padding: 0;
     width: 100%;
     min-height: 100vh;
   }
@@ -311,6 +297,10 @@ $uniride-android-black:      #2F3D52;
     transform: translateY(-50%);
     overflow: scroll;
     overflow-x: hidden;
+    .skills-row{
+      width: 80%;
+      opacity: 0;
+    }
   }
 
   #arrow-projects {
@@ -327,10 +317,6 @@ $uniride-android-black:      #2F3D52;
   }
 
   .arrow-wrapper{
-    position: absolute;
-    top: 5vmin;
-    left: 5vmin;
-    opacity: 0;
     &:hover{
       #arrow-projects:nth-child(1){
         transform: rotate(-495deg);
@@ -364,7 +350,7 @@ $uniride-android-black:      #2F3D52;
   .project-description{
     position: relative;
     margin: auto;
-    width: 80%;
+    width: 50%;
     margin-top: 20px;
     font-family: 'Fira Sans', sans-serif;
     .align-left{
@@ -387,6 +373,24 @@ $uniride-android-black:      #2F3D52;
     height: 32vw;
     min-width: 300px; min-height: 300px;
     //opacity: 0;
+  }
+}
+
+.arrow-wrapper{
+  position: absolute;
+  top: 5vmin;
+  left: 5vmin;
+  opacity: 0;
+  &:hover{
+    #arrow-projects:nth-child(1){
+      transform: rotate(-495deg);
+    }
+    #arrow-projects:nth-child(2){
+      transform: translateX(-35px) rotate(45deg);
+      @media (max-width: 500px){
+        transform: translateX(-25px) rotate(45deg);
+      }
+    }
   }
 }
 

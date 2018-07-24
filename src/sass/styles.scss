@@ -4,6 +4,7 @@
 @import "pages/about";
 @import "pages/skills";
 @import "pages/projects";
+@import "pages/animations-section";
 
 html, body{
   margin: 0;
@@ -23,6 +24,53 @@ html, body{
     background: #FF0000;
 }
 
+#attention-overlay{
+    position: absolute;
+    z-index: 999;
+    opacity: 0.99;
+    overflow: hidden;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    background: $primary-blue;
+    #text-box{
+      position: relative;
+      margin: auto;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 300px;
+      height: 200px;
+      border: solid 1px $accent-red-2;
+      padding: 20px;
+    }
+
+    #upper-text{
+      position: relative;
+      width: 100%;
+      line-height: 30px;
+      font-size: 16px;
+      color: $accent-red-bright;
+    }
+    #attention-button{
+      position: absolute;
+      right: 10px;
+      bottom: 10px;
+      width: 60px;
+      height: 50px;
+      background: $accent-red-3;
+      border-radius: 20px;
+      border: none;
+      font-weight: bold;
+      color: $custom-white;
+      font-size: 20px;
+      cursor: pointer;
+      &:focus{
+        outline: none !important;
+      }
+    }
+
+}
+
 .heading{
   font-family: 'Racing Sans One', cursive;
   font-size: 5vh;
@@ -39,4 +87,50 @@ html, body{
   margin: 20px auto;
   border-top: solid 1px;
   width: 80%;
+}
+
+.global-arrow{
+  display: block;
+  position: fixed;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: $primary-blue;
+  cursor: pointer;
+  @include add-shadow($primary-blue, 5px, 0);
+}
+
+#global-down{
+  right: 1vw;
+  bottom: 1vh;
+}
+
+#global-up{
+  left: 1vw;
+  top: 1vh;
+}
+
+.global-arrow-pointer{
+  position: relative;
+  margin: auto;
+  width: 40%;
+  height: 40%;
+  transform: rotate(45deg);
+  box-sizing: border-box;
+}
+
+#global-down .global-arrow-pointer{
+  top: 20%;
+  border: solid $accent-red-bright;
+  border-width: 0 4px 4px 0;
+}
+
+#global-up .global-arrow-pointer{
+  top: 40%;
+  border: solid $accent-red-bright;
+  border-width: 4px 0 0 4px;
+}
+
+#global-up{
+  visibility: hidden;
 }

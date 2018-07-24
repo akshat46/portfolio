@@ -2,8 +2,8 @@
 <div id="project">
   <div class="project-element" id="{{tilt_selector}}">
     {% if project.title is same as('Uniride') and project.type is same as('Web') %}
-      <div class="heading">Projects</div>
-      <div class="divider"></div>
+    <div class="heading">Projects</div>
+    <div class="divider"></div>
     {% endif %}
     <div class="project-element-box">
       <div class="box-overlay"><div class="project-top-bar">
@@ -15,27 +15,43 @@
       <div class="project-description-main">
         <div class= "project-preview-landscape">
           <!-- <video loop muted autoplay class= "project-preview-landscape">
-            <source src="../img/temp_video.mp4" type="video/mp4">
-          </video> -->
-        </div>
-        <div class="project-title">
-          <div class="title-1">{{project.title}}<br/></div>
-          <div class="title-2">{{project.type}}</div>
-        </div>
+          <source src="../img/temp_video.mp4" type="video/mp4">
+        </video> -->
       </div>
-    </div>
-    <div id="project-transition-overlay">
-    </div>
-    <div id="project-detail-background">
-      <div class="arrow-wrapper"><div id="arrow-projects"></div><div id="arrow-projects"></div></div>
-      <div class="project-detail-wrapper">
-        <div class="project-title">
-          <div class="title-1">{{project.title}}<br/></div>
-          <div class="title-2">{{project.type}}</div>
-        </div>
-        <div class="project-preview-landscape-enlarged"></div>
-        <div class="project-description"><div class="align-left">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In odio turpis, facilisis sed augue ac, sollicitudin egestas leo. Aliquam commodo risus ut mi pulvinar, vestibulum vulputate ligula tempus. Vivamus tincidunt dictum laoreet. Proin mi dui, laoreet sed aliquam vel, volutpat vel quam. In condimentum venenatis risus vel posuere.</div></div>
+      <div class="project-title">
+        <div class="title-1">{{project.title}}<br/></div>
+        <div class="title-2">{{project.type}}</div>
       </div>
     </div>
   </div>
+  <div id="project-transition-overlay">
+  </div>
+  <div id="project-detail-background">
+    <div class="arrow-wrapper"><div id="arrow-projects"></div><div id="arrow-projects"></div></div>
+    <div class="project-detail-wrapper">
+      <div class="project-title">
+        <div class="title-1">{{project.title}}<br/></div>
+        <div class="title-2">{{project.type}}</div>
+      </div>
+      <div class="project-preview-landscape-enlarged"></div>
+      <div class="project-description"><div class="align-left">{{project.description}}</div></div>
+      <div class="skills-row" id="project-links">
+        <div class="skill-element"><div class="title-1">Links:</div></div>
+        {% for link in project.links %}
+        <div class="skill-element">
+          <a href="{{link.url}}" class="skill-logo" style="background-image: url('{{link.logo}}')" target="_blank"></a>
+        </div>
+        {% endfor %}
+      </div>
+      <div class="skills-row" id="project-skills">
+        {% for skill in project.skills %}
+        <div class="skill-element">
+          <div class="skill-logo" style="background-image: url('{{skill.logo}}')"></div>
+          <div class="text">{{skill.name}}</div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
 </div>

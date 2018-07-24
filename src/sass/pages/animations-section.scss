@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css?family=Oswald:200');
+@import "styles.vars";
+
+@mixin disable-select{
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+  supported by Chrome and Opera */
+}
+
+#animations-section{
+    background-color: $motion-background;
+}
+
+@mixin smooth-transition{
+  -webkit-transition: all 0.2s;
+  -moz-transition:    all 0.2s ease-out;
+  -ms-transition:     all 0.2s ease-out;
+  -o-transition:      all 0.2s ease-out;
+}
+
+.motion-button-wrapper{
+  position: absolute;
+  top: 0; bottom: 0;
+  box-sizing: border-box;
+  margin: auto 0;
+  padding: 0;
+  width: 100%;
+  height: 36vmin;
+  text-align: center;
+
+  &:hover{
+    #motion-button-text{
+      letter-spacing: 10px;
+    }
+    #motion-line{
+      width: 100%;
+    }
+    #motion-button{
+      height: 24vmin;
+    }
+    #motion-button #motion-button-left{
+      border-top: 12vmin solid transparent;
+      border-bottom: 12vmin solid transparent;
+      border-right: 24vmin solid black;
+      left: -6vmin;
+    }
+    #motion-button #motion-button-right{
+      border-top: 12vmin solid transparent;
+      border-bottom: 12vmin solid transparent;
+      border-left: 24vmin solid black;
+      right: -6vmin;
+    }
+  }
+
+  #motion-button{
+    display: block;
+    position: absolute;
+    width: 36vmin;
+    height: 36vmin;
+    top: 0; right: 0; left: 0; bottom: 0;
+    margin: auto;
+    cursor: pointer;
+    @include smooth-transition();
+
+    #motion-button-left{
+      position: absolute;
+      left: 0;
+      width: 0;
+      height: 0;
+      border-top: 18vmin solid transparent;
+      border-bottom: 18vmin solid transparent;
+      border-right: 18vmin solid black;
+      @include smooth-transition();
+    }
+
+    #motion-button-right{
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 0;
+      height: 0;
+      border-top: 18vmin solid transparent;
+      border-bottom: 18vmin solid transparent;
+      border-left: 18vmin solid black;
+      @include smooth-transition();
+    }
+  }
+
+  #motion-line{
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: auto;
+    background: black;
+    width: 0px;
+    height: 1px;
+    @include smooth-transition();
+  }
+
+  //TODO: disable select
+  #motion-button-text{
+    @include disable-select;
+    position: relative;
+    width: 100%;
+    height: 8vmin;
+    max-width: 300px;
+    top: 50% !important;
+    transform: translateY(-50%);
+    //top: 0; right: 0; left: 0; bottom: 0;
+    margin: auto;
+    text-align: center;
+    font-size: 4vmin;
+    letter-spacing: 5px;
+    color: white;
+    font-family: 'Oswald', sans-serif;
+    z-index: 2;
+    cursor: pointer;
+    @include smooth-transition();
+    strong{
+      opacity: 0;
+    }
+  }
+
+  @media (max-width: 591px), (max-height: 591px){
+    #motion-button-text{
+      font-size: 16px;
+      letter-spacing: 2px;
+    }
+  }
+}
+
+#motion-background{
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  margin: auto;
+  background: black;
+  z-index: 1;
+  width: 1px;
+  height: 0px;
+  @include smooth-transition;
+  overflow-y: scroll;
+
+  #arrow-motion{
+    @include arrow-dimensions(30px, 4px, white, 135deg);
+    border-radius: 3px;
+    box-sizing: border-box;
+    cursor: pointer;
+    position: absolute;
+    @include smooth-transition;
+
+    @media (max-width: 500px){
+      @include arrow-dimensions(20px, 4px, white, 135deg);
+    }
+  }
+
+  .row{
+    position: relative;
+    margin: auto;
+    width: 80%;
+    top: 20%;
+    opacity: 0;
+  }
+
+  .misc-element{
+    display: inline-block;
+    width: 300px;
+    height: 300px;
+    margin-bottom: 5vw;
+    border-radius: 5px;
+    background: white;
+  }
+}

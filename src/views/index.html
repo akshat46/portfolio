@@ -9,11 +9,23 @@
     <link onerror="myfunction()" rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/flexboxgrid/6.3.1/flexboxgrid.min.css" type="text/css" >
 </head>
 <body>
+    <div id="attention-overlay">
+        <div id="text-box">
+            <div id="upper-text" class="text">This website is yet to be fully optimized for mobile screens. It may not function as desired.</div>
+            <button id="attention-button" class="text">OK</button>
+        </div>
+    </div>
     {% block main %}
     {% include '/_layouts/_about.html' %}
     {% include '/_layouts/_skills.html' %}
     {% include '/_layouts/_projects.html' %}
     {% endblock %}
+    <!-- <div class="global-arrow" id="global-up">
+        <div class="global-arrow-pointer"></div>
+    </div>
+    <div class="global-arrow" id="global-down">
+        <div class="global-arrow-pointer"></div>
+    </div> -->
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script
     src="https://code.jquery.com/jquery-3.3.1.min.js"

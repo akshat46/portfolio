@@ -3,3 +3,28 @@
 {% for project in projects %}
 {% include '/_layouts/_components/_project-element.html' with {'project': project} %}
 {% endfor %}
+
+<div id="project">
+  <div class="project-element" id="animations-section">
+    <div class="motion-button-wrapper">
+      <div id="motion-line"></div>
+      <div id="motion-button">
+        <div id="motion-button-left"></div>
+        <div id="motion-button-right"></div>
+      </div>
+      <div id="motion-button-text">Animations</div>
+    </div>
+    <div id="motion-background">
+      <div class="arrow-wrapper"><div id="arrow-motion"></div><div id="arrow-motion"></div></div>
+      <div class="row">
+        <div class="col-xs">
+          <div class="misc-element"></div>
+          <div class="misc-element"></div>
+        </div>
+        <div class="col-xs">
+          <div class="misc-element"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

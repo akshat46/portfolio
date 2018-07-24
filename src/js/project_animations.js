@@ -49,25 +49,25 @@ function animate_overlays(on, selector){
   var overlay_timeline = anime.timeline();
   if(on){
     overlay_timeline
-      .add(slide_horz(selector.concat('#project-transition-overlay'), 2000, 'easeInOutQuart', 0,['100%', 0]))
-      .add(slide_horz(selector.concat('.project-element-box'), 2000, 'easeInOutQuart', 0,'-100%'))
-      .add(slide_horz(selector.concat('#project-detail-background'), 2000, 'easeOutQuart', '-=1000', ['100%', 0]))
-      .add(scale(selector.concat('#project-detail-background'), 1000, 'easeInOutQuart', '-=500', [0.7, 1]))
-      .add(slide_vert(selector.concat('#project-detail-background .project-preview-landscape-enlarged'), 800, 'easeOutCirc', '-=500', ['60%', 0], [0, 1]))
-      .add(slide_vert(selector.concat('#project-detail-background .project-title'), 600, 'easeOutQuart', '-=600', ['60%', 0], [0, 1]))
-      .add(slide_vert(selector.concat('.project-description .align-left'), 400, 'easeOutCirc', '-=500', ['60%', 0], [0, 1]))
-      .add(slide_horz(selector.concat('#project-detail-background .arrow-wrapper'), 2000, 'easeOutQuart', '-=1000', ['100%', '5%'], [0,1]));
+    .add(slide_horz(selector.concat('#project-transition-overlay'), 2000, 'easeInOutQuart', 0,['100%', 0]))
+    .add(slide_horz(selector.concat('.project-element-box'), 2000, 'easeInOutQuart', 0,'-100%'))
+    .add(slide_horz(selector.concat('#project-detail-background'), 2000, 'easeOutQuart', '-=1000', ['100%', 0]))
+    .add(scale(selector.concat('#project-detail-background'), 1000, 'easeInOutQuart', '-=500', [0.7, 1]))
+    .add(slide_vert(selector.concat('#project-detail-background .project-preview-landscape-enlarged'), 800, 'easeOutCirc', '-=500', ['60%', 0], [0, 1]))
+    .add(slide_vert(selector.concat('#project-detail-background .project-title'), 600, 'easeOutQuart', '-=600', ['60%', 0], [0, 1]))
+    .add(slide_vert(selector.concat(['.project-description .align-left', '#project-links', '#project-skills']), 400, 'easeOutCirc', '-=500', ['60%', 0], [0, 1]))
+    .add(slide_horz(selector.concat('#project-detail-background .arrow-wrapper'), 2000, 'easeOutQuart', '-=1000', ['100%', '5%'], [0,1]));
   }
   else{
     overlay_timeline
-      .add(scale(selector.concat('#project-detail-background'), 1000, 'easeInOutQuart', 0, [1, 0.7]))
-      .add(slide_vert(selector.concat('#project-detail-background .project-preview-landscape-enlarged'), 800, 'easeOutCirc', '-=1000', [0, 0], [1, 0]))
-      .add(slide_vert(selector.concat('#project-detail-background .project-title'), 600, 'easeOutQuart', '-=800', [0, 0], [1, 0]))
-      .add(slide_vert(selector.concat('.project-description .align-left'), 400, 'easeOutCirc', '-=600', [0, 0], [1, 0]))
-      .add(slide_horz(selector.concat('#project-detail-background .arrow-wrapper'), 200, 'easeOutQuart', '-=1000', ['5%', '5%'], [1, 0]))
-      .add(slide_horz(selector.concat('#project-detail-background'), 1500, 'easeInQuart', '-=1000', [0, '100%']))
-      .add(slide_horz(selector.concat('.project-element-box'), 1500, 'easeInOutQuart', 0, '0'))
-      .add(slide_horz(selector.concat('#project-transition-overlay'), 1500, 'easeInOutQuart', '-=700',[0, '100%']));
+    .add(scale(selector.concat('#project-detail-background'), 1000, 'easeInOutQuart', 0, [1, 0.7]))
+    .add(slide_vert(selector.concat('#project-detail-background .project-preview-landscape-enlarged'), 800, 'easeOutCirc', '-=1000', [0, 0], [1, 0]))
+    .add(slide_vert(selector.concat('#project-detail-background .project-title'), 600, 'easeOutQuart', '-=800', [0, 0], [1, 0]))
+    .add(slide_vert(selector.concat(['.project-description .align-left', '#project-links', '#project-skills']), 400, 'easeOutCirc', '-=600', [0, 0], [1, 0]))
+    .add(slide_horz(selector.concat('#project-detail-background .arrow-wrapper'), 200, 'easeOutQuart', '-=1000', ['5%', '5%'], [1, 0]))
+    .add(slide_horz(selector.concat('#project-detail-background'), 1500, 'easeInQuart', '-=1000', [0, '100%']))
+    .add(slide_horz(selector.concat('.project-element-box'), 1500, 'easeInOutQuart', 0, '0'))
+    .add(slide_horz(selector.concat('#project-transition-overlay'), 1500, 'easeInOutQuart', '-=700',[0, '100%']));
   }
   overlay_timeline.play();
 }
@@ -124,3 +124,66 @@ function tilt_parallax(target){
 
 tilt_parallax("#Uniride-Web .project-element-box");
 tilt_parallax("#Uniride-Android .project-element-box");
+
+function animations_expand(){
+  //$('#motion-background .row').show();
+  var expand = anime.timeline();
+  expand
+  .add({
+    targets: '#motion-background',
+    height: [{value: '100%', duration: 800, delay: 0, easing: 'easeOutExpo'}],
+    width: [{value: ['1px', '100%'], duration: 1500, delay: 750, easing: 'easeInOutExpo'}],
+  })
+  .add({
+    targets: '.motion-button-wrapper',
+    duration: 1000,
+    easing: 'easeOutExpo',
+    offset: '-=200',
+    top: '-80%',
+  })
+  .add({
+    targets: '#motion-background .arrow-wrapper, #motion-background .row',
+    duration: 800,
+    easing: 'easeOutExpo',
+    opacity: [0, 1],
+  })
+  expand.play();
+}
+
+function animations_contract(){
+  var contract = anime.timeline();
+  contract
+  .add({
+    targets: '#motion-background .arrow-wrapper, #motion-background .row',
+    duration: 400,
+    easing: 'easeOutExpo',
+    opacity: [1,0],
+  })
+  .add({
+    targets: '.motion-button-wrapper',
+    duration: 1000,
+    easing: 'easeOutExpo',
+    offset: '-=200',
+    top: ['-80%', 0],
+  })
+  .add({
+    targets: '#motion-background',
+    width: [{value: ['100%', 0], duration: 800, delay: 0, easing: 'easeOutExpo'}],
+    height: [{value: ['100%', 0], duration: 800, delay: 1000, easing: 'easeOutExpo'}],
+  })
+  contract.play();
+}
+
+$('#motion-button').click(function(){
+  console.log('clicked');
+  animations_expand();
+});
+
+$('#motion-button-text').click(function(){
+  console.log('clicked');
+  animations_expand();
+})
+
+$('#motion-background .arrow-wrapper').click(function(){
+  animations_contract();
+})

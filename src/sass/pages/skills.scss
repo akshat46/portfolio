@@ -2,8 +2,8 @@
 @import url('https://fonts.googleapis.com/css?family=Fira+Sans:200,300,400|Racing+Sans+One');
 
 #skills-wrapper{
-    display: block;
-    position: relative;
+	display: block;
+	position: relative;
 	width: 100%;
 	height: 100%;
 	overflow-y: visible;
@@ -106,17 +106,21 @@
 		margin: 5px;
 		padding: 5px;
 		width: 100px;
+		.title-1{
+			font-size: 14px;
+			line-height: 50px;
+		}
 	}
 	.skill-logo{
 		display: block;
 		position: relative;
 		box-sizing: border-box;
-		width: 60px;
-		height: 60px;
+		width: 30px;
+		height: 30px;
 		margin: 0 auto;
 		margin-bottom: 5px;
 		background-repeat: no-repeat;
-        background-size: 50px;
+		background-size: cover;
 		-webkit-background-origin:border;
 		background-position: center;
 	}
@@ -124,5 +128,22 @@
 		font-size: 15px;
 		color: $custom-white;
 		opacity: 0.8;
+	}
+}
+
+#project-links{
+	margin-top: 5px;
+	.skill-element{width: 70px;}
+	.skill-logo{
+		width: 50px;
+		height: 50px;
+		border-radius: 50%;
+		background-size: cover;
+		-webkit-background-origin:border;
+		background-position: center;
+		@include smooth-transition;
+		&:hover{
+			transform: scale(1.2);
+		}
 	}
 }
